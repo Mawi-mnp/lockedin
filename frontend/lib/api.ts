@@ -188,6 +188,18 @@ export const api = {
   async getTransactions(): Promise<Transaction[]> {
     return request<Transaction[]>('/transactions');
   },
+
+  // Billing
+  async createCheckoutSession(data: { 
+    tier: 'pro' | 'enterprise'; 
+    success_url: string; 
+    cancel_url: string; 
+  }): Promise<{ url: string }> {
+    return request<{ url: string }>('/billing/checkout', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  },
 };
 
 export { getToken, setToken, removeToken };

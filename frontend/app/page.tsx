@@ -1,18 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import SmoothScroll from '@/components/SmoothScroll';
 import { FadeIn, FadeInUp, StaggerContainer, StaggerItem, ScaleIn, SlideInLeft, SlideInRight } from '@/components/animations';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import FadeInUp from '@/components/animations/FadeInUp';
 import StaggerGrid from '@/components/animations/StaggerGrid';
 import HoverCard from '@/components/animations/HoverCard';
 import HoverButton from '@/components/animations/HoverButton';
 
 export default function LandingPage() {
   const [mounted, setMounted] = useState(false);
-  const containerRef = React.useRef(null);
+  const containerRef = useRef(null);
   const { scrollYProgress } = useScroll();
   
   // Parallax effects for hero orbs
