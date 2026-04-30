@@ -6,10 +6,10 @@ goals, and withdrawals.
 """
 
 from sqlalchemy import Column, Integer, String, Float, Boolean, DateTime, ForeignKey
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 from datetime import datetime
 
-Base = declarative_base()
+from app.database import Base
 
 
 class User(Base):
@@ -28,6 +28,7 @@ class User(Base):
     contributions = relationship('Contribution', back_populates='user')
     goals = relationship('Goal', back_populates='user')
     withdrawals = relationship('Withdrawal', back_populates='user')
+    subscription = relationship('Subscription', back_populates='user', uselist=False)
 
 
 class Contribution(Base):

@@ -46,33 +46,42 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Create your account
+    <div className="min-h-screen bg-black text-white flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Animated gradient orb background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-[30%] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(83,58,253,0.15)_0%,rgba(168,85,247,0.08)_40%,transparent_70%)] blur-[60px] animate-pulse" />
+      </div>
+
+      <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md">
+        {/* Mascot */}
+        <div className="flex justify-center mb-6">
+          <div className="w-14 h-14 bg-gradient-to-br from-[#533afd] to-[#a855f7] rounded-xl flex items-center justify-center text-2xl shadow-lg shadow-[#533afd]/30">
+            🦡
+          </div>
+        </div>
+
+        <h2 className="text-center text-3xl font-bold tracking-tight">
+          Start building your reputation
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Already have an account?{' '}
-          <Link href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
-            Sign in
-          </Link>
+        <p className="mt-2 text-center text-sm text-[#a6a6a6]">
+          Join entrepreneurs who prove their commitment every day
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+      <div className="mt-8 relative z-10 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-[#0a0a0a] border border-white/8 py-8 px-4 rounded-2xl sm:px-10">
+          <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+              <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
 
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="username" className="block text-sm font-medium text-[#a6a6a6]">
                 Username
               </label>
-              <div className="mt-1">
+              <div className="mt-2">
                 <input
                   id="username"
                   type="text"
@@ -88,19 +97,20 @@ export default function RegisterPage() {
                       message: 'Username must be less than 30 characters',
                     },
                   })}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-4 py-3 bg-[#0f0f0f] border border-white/8 rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#533afd] focus:ring-2 focus:ring-[#533afd]/20 transition-all sm:text-sm"
+                  placeholder="johndoe"
                 />
                 {errors.username && (
-                  <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
+                  <p className="mt-2 text-sm text-red-400">{errors.username.message}</p>
                 )}
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-[#a6a6a6]">
                 Email address
               </label>
-              <div className="mt-1">
+              <div className="mt-2">
                 <input
                   id="email"
                   type="email"
@@ -112,19 +122,20 @@ export default function RegisterPage() {
                       message: 'Invalid email address',
                     },
                   })}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-4 py-3 bg-[#0f0f0f] border border-white/8 rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#533afd] focus:ring-2 focus:ring-[#533afd]/20 transition-all sm:text-sm"
+                  placeholder="you@example.com"
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                  <p className="mt-2 text-sm text-red-400">{errors.email.message}</p>
                 )}
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-[#a6a6a6]">
                 Password
               </label>
-              <div className="mt-1">
+              <div className="mt-2">
                 <input
                   id="password"
                   type="password"
@@ -136,19 +147,20 @@ export default function RegisterPage() {
                       message: 'Password must be at least 6 characters',
                     },
                   })}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-4 py-3 bg-[#0f0f0f] border border-white/8 rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#533afd] focus:ring-2 focus:ring-[#533afd]/20 transition-all sm:text-sm"
+                  placeholder="••••••••"
                 />
                 {errors.password && (
-                  <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
+                  <p className="mt-2 text-sm text-red-400">{errors.password.message}</p>
                 )}
               </div>
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-[#a6a6a6]">
                 Confirm Password
               </label>
-              <div className="mt-1">
+              <div className="mt-2">
                 <input
                   id="confirmPassword"
                   type="password"
@@ -158,48 +170,56 @@ export default function RegisterPage() {
                     validate: (value) =>
                       value === password || 'Passwords do not match',
                   })}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-4 py-3 bg-[#0f0f0f] border border-white/8 rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#533afd] focus:ring-2 focus:ring-[#533afd]/20 transition-all sm:text-sm"
+                  placeholder="••••••••"
                 />
                 {errors.confirmPassword && (
-                  <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>
+                  <p className="mt-2 text-sm text-red-400">{errors.confirmPassword.message}</p>
                 )}
               </div>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-start">
               <input
                 id="terms"
                 type="checkbox"
                 {...register('terms', {
                   required: 'You must accept the terms',
                 })}
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                className="mt-1 h-4 w-4 rounded border-white/20 bg-[#0f0f0f] text-[#533afd] focus:ring-[#533afd] focus:ring-offset-0"
               />
-              <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
+              <label htmlFor="terms" className="ml-2 block text-sm text-[#a6a6a6] leading-relaxed">
                 I agree to the{' '}
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <a href="#" className="font-medium text-[#533afd] hover:text-[#a855f7] transition-colors">
                   Terms and Conditions
                 </a>{' '}
                 and{' '}
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <a href="#" className="font-medium text-[#533afd] hover:text-[#a855f7] transition-colors">
                   Privacy Policy
                 </a>
               </label>
             </div>
             {errors.terms && (
-              <p className="text-sm text-red-600">{errors.terms.message}</p>
+              <p className="text-sm text-red-400">{errors.terms.message}</p>
             )}
 
             <div>
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl text-sm font-medium text-white bg-gradient-to-r from-[#533afd] to-[#665efd] hover:shadow-lg hover:shadow-[#533afd]/30 focus:outline-none focus:ring-2 focus:ring-[#533afd] focus:ring-offset-2 focus:ring-offset-[#0a0a0a] disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5"
               >
                 {isLoading ? 'Creating account...' : 'Create account'}
               </button>
             </div>
           </form>
+
+          <p className="mt-8 text-center text-sm text-[#a6a6a6]">
+            Already have an account?{' '}
+            <Link href="/login" className="font-medium text-[#533afd] hover:text-[#a855f7] transition-colors">
+              Sign in
+            </Link>
+          </p>
         </div>
       </div>
     </div>

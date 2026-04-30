@@ -1,0 +1,33 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: commitment-score-db
+    env: postgres
+    region: oregon
+    database:
+      name: commitment_score
+      postgresMajorVersion: 15
+    disk:
+      name: data
+      mountPath: /var/lib/postgresql/data
+      sizeGB: 1
+    ipAllowList: []
+
+  # Backend API Web Service
+  - type: web
+    name: commitment-score-api
+    env: python
+    region: oregon
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: commitment-score-db
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: 3.11.15
+      - key: PORT
+        value: 10000

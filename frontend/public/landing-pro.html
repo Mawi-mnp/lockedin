@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CommitScore — Build Accountability, Achieve Goals</title>
+  
+  <!-- Google Fonts: Geist + Geist Mono (Vercel's system) + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================
+       COMMITSCORE PRO DESIGN SYSTEM
+       Hybrid: Vercel precision + Framer cinematic + Stripe warmth
+       ============================================ */
+    
+    :root {
+      /* Backgrounds — Framer pure black void */
+      --bg-primary: #000000;
+      --bg-elevated: #0a0a0a;
+      --bg-surface: #0f0f0f;
+      
+      /* Brand — Stripe purple + Framer blue fusion */
+      --brand-primary: #533afd;
+      --brand-hover: #665efd;
+      --brand-glow: rgba(83, 58, 253, 0.3);
+      --brand-ring: rgba(83, 58, 253, 0.15);
+      
+      /* Text — Vercel hierarchy */
+      --text-primary: #ffffff;
+      --text-secondary: #a6a6a6;
+      --text-tertiary: #666666;
+      --text-muted: #444444;
+      
+      /* Borders — Vercel shadow-as-border */
+      --border-shadow: rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;
+      --border-subtle: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px;
+      --border-brand: rgba(83, 58, 253, 0.3) 0px 0px 0px 1px;
+      
+      /* Shadows — Vercel multi-layer + Framer blue ring */
+      --shadow-xs: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 1px 1px;
+      --shadow-sm: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 2px;
+      --shadow-md: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 4px, rgba(0, 0, 0, 0.04) 0px 8px 8px -8px;
+      --shadow-lg: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.08) 0px 16px 24px -16px;
+      --shadow-glow: rgba(83, 58, 253, 0.2) 0px 0px 60px -20px;
+      --shadow-inner: #1a1a1a 0px 0px 0px 1px inset;
+      
+      /* Status */
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.15);
+      --warning: #f59e0b;
+      --error: #ef4444;
+      
+      /* Spacing — Vercel scale */
+      --space-1: 2px;
+      --space-2: 4px;
+      --space-3: 6px;
+      --space-4: 8px;
+      --space-5: 10px;
+      --space-6: 12px;
+      --space-8: 16px;
+      --space-10: 20px;
+      --space-12: 24px;
+      --space-16: 32px;
+      --space-20: 40px;
+      --space-24: 48px;
+      --space-32: 64px;
+      --space-40: 80px;
+      --space-48: 96px;
+      --space-64: 128px;
+      
+      /* Radius — Framer pills + Vercel precision */
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 8px;
+      --radius-xl: 12px;
+      --radius-2xl: 16px;
+      --radius-pill: 9999px;
+    }
+    
+    /* ============================================
+       BASE STYLES
+       ============================================ */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Typography — Vercel compression */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+    
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+    
+    h3 {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    
+    p {
+      font-size: 1.0625rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #533afd 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .text-gradient-blue {
+      background: linear-gradient(135deg, #0099ff 0%, #533afd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* ============================================
+       NAVIGATION — Vercel precision
+       ============================================ */
+    
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: var(--space-4) var(--space-6);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: var(--border-subtle);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    
+    .nav-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--brand-primary), #a855f7);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+    
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+    
+    .nav-cta {
+      display: flex;
+      gap: var(--space-3);
+    }
+    
+    /* ============================================
+       BUTTONS — Framer pills + Vercel shadows
+       ============================================ */
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      font-size: 0.875rem;
+      font-weight: 500;
+      font-family: inherit;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: all 0.15s;
+      cursor: pointer;
+      border: none;
+      letter-spacing: -0.01em;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand-primary) 0%, #665efd 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md), var(--shadow-glow);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      border: var(--border-subtle);
+      backdrop-filter: blur(8px);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--brand-primary);
+    }
+    
+    .btn-lg {
+      padding: var(--space-4) var(--space-8);
+      font-size: 0.9375rem;
+    }
+    
+    .btn-pill {
+      border-radius: var(--radius-pill);
+      padding: var(--space-3) var(--space-6);
+    }
+    
+    /* ============================================
+       HERO SECTION — Framer cinematic
+       ============================================ */
+    
+    .hero {
+      padding: calc(100px + var(--space-32)) var(--space-6) var(--space-48);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Animated gradient orb */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(83, 58, 253, 0.2) 0%, rgba(168, 85, 247, 0.1) 40%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-mascot {
+      margin-bottom: var(--space-8);
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+    
+    .hero-mascot svg {
+      width: clamp(70px, 12vw, 100px);
+      height: auto;
+      filter: drop-shadow(0 0 20px rgba(83, 58, 253, 0.3));
+    }
+    
+    .hero h1 {
+      margin-bottom: var(--space-6);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto var(--space-8);
+      line-height: 1.8;
+    }
+    
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    
+    .hero-trust {
+      margin-top: var(--space-12);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-6);
+      color: var(--text-tertiary);
+      font-size: 0.8125rem;
+    }
+    
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    
+    .hero-trust-icon {
+      color: var(--success);
+      font-weight: 700;
+    }
+    
+    /* ============================================
+       STATS BAR — Vercel precision
+       ============================================ */
+    
+    .stats-bar {
+      background: var(--bg-elevated);
+      border-top: var(--border-subtle);
+      border-bottom: var(--border-subtle);
+      padding: var(--space-10) var(--space-6);
+    }
+    
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-10);
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--brand-primary) 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+    
+    .stat-label {
+      font-size: 0.8125rem;
+      color: var(--text-tertiary);
+      margin-top: var(--space-2);
+      font-weight: 500;
+    }
+    
+    /* ============================================
+       HOW IT WORKS — Card system
+       ============================================ */
+    
+    .features {
+      padding: var(--space-48) var(--space-6);
+    }
+    
+    .features-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .features-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--space-20);
+    }
+    
+    .features-header h2 {
+      margin-bottom: var(--space-4);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+    }
+    
+    .feature-card {
+      background: var(--bg-surface);
+      border: var(--border-shadow);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card:hover {
+      border-color: var(--brand-primary);
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+      transform: translateY(-4px);
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brand-primary), #a855f7, #ec4899);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+    
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, rgba(83, 58, 253, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-5);
+      font-size: 1.375rem;
+      border: var(--border-subtle);
+    }
+    
+    .feature-card h3 {
+      margin-bottom: var(--space-3);
+      color: var(--text-primary);
+      font-size: 1.25rem;
+    }
+    
+    .feature-card p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.9375rem;
+    }
+    
+    .feature-step {
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      width: 28px;
+      height: 28px;
+      background: var(--bg-elevated);
+      border: var(--border-shadow);
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      font-family: 'Geist Mono', monospace;
+    }
+    
+    /* ============================================
+       SCORE VISUALIZATION
+       ============================================ */
+    
+    .score-section {
+      padding: var(--space-48) var(--space-6);
+      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-elevated) 100%);
+      border-top: var(--border-subtle);
+      border-bottom: var(--border-subtle);
+    }
+    
+    .score-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    
+    .score-content h2 {
+      margin-bottom: var(--space-5);
+    }
+    
+    .score-content p {
+      margin-bottom: var(--space-6);
+    }
+    
+    .score-list {
+      list-style: none;
+      margin-bottom: var(--space-8);
+    }
+    
+    .score-list li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      font-size: 0.9375rem;
+    }
+    
+    .score-list strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .score-tier-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .tier-champion { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+    .tier-achiever { background: rgba(83, 58, 253, 0.2); color: #a855f7; }
+    .tier-builder { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+    .tier-starter { background: rgba(239, 68, 68, 0.2); color: var(--error); }
+    
+    .score-visual {
+      background: var(--bg-surface);
+      border: var(--border-shadow);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .score-circle {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--brand-primary) 0% 75%,
+        #a855f7 75% 85%,
+        var(--bg-elevated) 85% 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+    }
+    
+    .score-circle::before {
+      content: '';
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      background: var(--bg-surface);
+      border-radius: 50%;
+      border: var(--border-subtle);
+    }
+    
+    .score-value {
+      position: relative;
+      z-index: 1;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.04em;
+      font-family: 'Geist Mono', monospace;
+    }
+    
+    .score-label {
+      margin-top: var(--space-4);
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+    
+    /* ============================================
+       TESTIMONIALS
+       ============================================ */
+    
+    .testimonials {
+      padding: var(--space-48) var(--space-6);
+    }
+    
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .testimonials-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--space-20);
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-6);
+    }
+    
+    .testimonial-card {
+      background: var(--bg-surface);
+      border: var(--border-shadow);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-7);
+      transition: all 0.2s;
+    }
+    
+    .testimonial-card:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
+    
+    .testimonial-stars {
+      color: #fbbf24;
+      font-size: 1rem;
+      margin-bottom: var(--space-4);
+      letter-spacing: 2px;
+    }
+    
+    .testimonial-text {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-5);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand-primary), #a855f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: #ffffff;
+    }
+    
+    .testimonial-info h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .testimonial-info p {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      margin: 0;
+    }
+    
+    /* ============================================
+       CTA SECTION
+       ============================================ */
+    
+    .cta-section {
+      padding: var(--space-48) var(--space-6);
+      background: var(--bg-elevated);
+      border-top: var(--border-shadow);
+    }
+    
+    .cta-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .cta-container h2 {
+      margin-bottom: var(--space-4);
+    }
+    
+    .cta-container p {
+      margin-bottom: var(--space-8);
+      color: var(--text-tertiary);
+    }
+    
+    .cta-form {
+      display: flex;
+      gap: var(--space-3);
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    
+    .cta-input {
+      flex: 1;
+      padding: var(--space-4) var(--space-5);
+      background: var(--bg-surface);
+      border: var(--border-shadow);
+      border-radius: var(--radius-pill);
+      color: var(--text-primary);
+      font-size: 0.9375rem;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    
+    .cta-input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px var(--brand-ring);
+    }
+    
+    .cta-input::placeholder {
+      color: var(--text-tertiary);
+    }
+    
+    /* ============================================
+       FOOTER — Vercel precision
+       ============================================ */
+    
+    .footer {
+      padding: var(--space-24) var(--space-6) var(--space-8);
+      background: var(--bg-primary);
+      border-top: var(--border-subtle);
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--space-12);
+      margin-bottom: var(--space-12);
+    }
+    
+    .footer-brand {
+      max-width: 280px;
+    }
+    
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.02em;
+    }
+    
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      line-height: 1.8;
+    }
+    
+    .footer-column h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: 'Geist Mono', monospace;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column li {
+      margin-bottom: var(--space-3);
+    }
+    
+    .footer-column a {
+      color: var(--text-tertiary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.15s;
+    }
+    
+    .footer-column a:hover {
+      color: var(--text-primary);
+    }
+    
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-8);
+      border-top: var(--border-subtle);
+    }
+    
+    .footer-bottom p {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: var(--space-4);
+    }
+    
+    .footer-social a {
+      color: var(--text-tertiary);
+      font-size: 1.125rem;
+      transition: color 0.15s;
+      text-decoration: none;
+    }
+    
+    .footer-social a:hover {
+      color: var(--brand-primary);
+    }
+    
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    
+    @media (max-width: 900px) {
+      .score-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+      
+      .score-visual {
+        order: -1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-trust {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-8);
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+      
+      .cta-form {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">🦡</div>
+        <span>CommitScore</span>
+      </a>
+      <div class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#testimonials">Stories</a>
+      </div>
+      <div class="nav-cta">
+        <a href="/login" class="btn btn-secondary">Log In</a>
+        <a href="/register" class="btn btn-primary btn-pill">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-mascot">
+        <!-- Commit the Honey Badger SVG — Enhanced -->
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Glow effect -->
+          <defs>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Body -->
+          <ellipse cx="60" cy="70" rx="35" ry="30" fill="#0a0a0a" stroke="url(#bodyGradient)" stroke-width="2.5" filter="url(#glow)"/>
+          <!-- Head -->
+          <circle cx="60" cy="40" r="25" fill="#0a0a0a" stroke="url(#bodyGradient)" stroke-width="2.5" filter="url(#glow)"/>
+          <!-- Gradient definition -->
+          <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#533afd"/>
+            <stop offset="100%" style="stop-color:#a855f7"/>
+          </linearGradient>
+          <!-- Eyes - determined -->
+          <ellipse cx="50" cy="38" rx="5" ry="6" fill="#ffffff"/>
+          <ellipse cx="70" cy="38" rx="5" ry="6" fill="#ffffff"/>
+          <circle cx="50" cy="38" r="3" fill="#0a0a0a"/>
+          <circle cx="70" cy="38" r="3" fill="#0a0a0a"/>
+          <!-- Eyebrows - focused -->
+          <path d="M45 30 L55 33" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M75 30 L65 33" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Nose -->
+          <ellipse cx="60" cy="48" rx="4" ry="3" fill="#ffffff"/>
+          <!-- Mouth - determined smile -->
+          <path d="M52 55 Q60 60 68 55" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Ears -->
+          <circle cx="38" cy="25" r="6" fill="#0a0a0a" stroke="url(#bodyGradient)" stroke-width="2.5"/>
+          <circle cx="82" cy="25" r="6" fill="#0a0a0a" stroke="url(#bodyGradient)" stroke-width="2.5"/>
+          <!-- Arms - confident -->
+          <path d="M30 65 Q20 75 25 85" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/>
+          <path d="M90 65 Q100 75 95 85" stroke="#0a0a0a" stroke-width="9" stroke-linecap="round"/>
+          <!-- Badge/Star - achievement -->
+          <polygon points="60,95 63,103 72,103 65,109 67,118 60,113 53,118 55,109 48,103 57,103" fill="url(#bodyGradient)" filter="url(#glow)"/>
+        </svg>
+      </div>
+      
+      <h1>
+        Build Accountability with<br>
+        <span class="text-gradient">Commitment Score</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Track your goals, stake your commitment, and build a reputation for following through. 
+        Connect with entrepreneurs who prove they're all in.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="/register" class="btn btn-primary btn-lg btn-pill">Get Started Free</a>
+        <a href="#how-it-works" class="btn btn-secondary btn-lg btn-pill">Learn More</a>
+      </div>
+      
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon">✓</span>
+          <span>No credit card required</span>
+        </div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon">✓</span>
+          <span>0-100 Score System</span>
+        </div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon">✓</span>
+          <span>Find co-founders</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Accountability</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">0-100</div>
+        <div class="stat-label">Score Range</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">Progress Tracking</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">∞</div>
+        <div class="stat-label">Goals Possible</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="features" id="how-it-works">
+    <div class="features-container">
+      <div class="features-header">
+        <h2>How <span class="text-gradient">It Works</span></h2>
+        <p>Three simple steps to build your entrepreneur reputation</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-step">1</div>
+          <div class="feature-icon">🎯</div>
+          <h3>Set Your Goal</h3>
+          <p>Define what you're committing to — a savings target, a business milestone, or a personal challenge. Set your deadline and stake your claim.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-step">2</div>
+          <div class="feature-icon">💰</div>
+          <h3>Stake Commitment</h3>
+          <p>Put skin in the game. Your financial contributions prove you're serious. Every deposit builds your reputation and your future.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-step">3</div>
+          <div class="feature-icon">📈</div>
+          <h3>Build Your Score</h3>
+          <p>Consistent contributions raise your Commitment Score (0-100). High scorers unlock partnerships and attract serious co-founders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Score Visualization -->
+  <section class="score-section">
+    <div class="score-container">
+      <div class="score-content">
+        <h2>Your Score is Your <span class="text-gradient">Social Proof</span></h2>
+        <p>
+          In the entrepreneur world, trust is everything. Your Commitment Score transforms 
+          your financial discipline into a verifiable reputation metric.
+        </p>
+        <ul class="score-list">
+          <li>
+            <span class="score-tier-icon tier-champion">✓</span>
+            <strong>90+ Score:</strong>&nbsp;Champion — Consistent contributor, highly sought after
+          </li>
+          <li>
+            <span class="score-tier-icon tier-achiever">●</span>
+            <strong>70-89 Score:</strong>&nbsp;Achiever — Solid track record, reliable partner
+          </li>
+          <li>
+            <span class="score-tier-icon tier-builder">◆</span>
+            <strong>50-69 Score:</strong>&nbsp;Builder — Growing reputation, room to prove
+          </li>
+          <li>
+            <span class="score-tier-icon tier-starter">■</span>
+            <strong>Below 50:</strong>&nbsp;Starter — Time to demonstrate commitment
+          </li>
+        </ul>
+        <a href="/register" class="btn btn-primary btn-lg btn-pill">Start Building Your Score</a>
+      </div>
+      
+      <div class="score-visual">
+        <div class="score-circle">
+          <div class="score-value">75</div>
+        </div>
+        <div class="score-label">Example Score — Achiever Level</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-container">
+      <div class="testimonials-header">
+        <h2>Entrepreneurs <span class="text-gradient">Trust CommitScore</span></h2>
+        <p>See how committed founders are building their reputations</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "My CommitScore of 92 helped me find a co-founder who knew I was serious. 
+            We just closed our seed round. This platform is gold."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AC</div>
+            <div class="testimonial-info">
+              <h4>Alice Chen</h4>
+              <p>Score: 92 — Tech Startup Founder</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Finally, a way to prove I'm not just another idea guy. My score went from 
+            45 to 78 in six months. Partners take me seriously now."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">BM</div>
+            <div class="testimonial-info">
+              <h4>Bob Martinez</h4>
+              <p>Score: 78 — E-commerce Venture</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "The accountability is real. Knowing my contributions affect my score keeps 
+            me on track. Best decision for my business discipline."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">DK</div>
+            <div class="testimonial-info">
+              <h4>David Kim</h4>
+              <p>Score: 65 — SaaS Builder</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2>Ready to Build <span class="text-gradient">Better Habits?</span></h2>
+      <p>Join thousands of entrepreneurs who prove their commitment every day.</p>
+      <form class="cta-form">
+        <input type="email" class="cta-input" placeholder="Enter your email" required>
+        <button type="submit" class="btn btn-primary btn-lg btn-pill">Create Account</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <span>🦡</span>
+            <span>CommitScore</span>
+          </div>
+          <p>Build accountability, achieve goals, and connect with entrepreneurs who are all in.</p>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">API</a></li>
+            <li><a href="#">Integrations</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2026 CommitScore. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#">𝕏</a>
+          <a href="#">in</a>
+          <a href="#">◉</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

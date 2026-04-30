@@ -5,7 +5,7 @@ This module provides database session management and connection setup.
 """
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session, declarative_base
 from typing import Generator
 
 # Database URL - using SQLite for development, can be changed to PostgreSQL
@@ -19,6 +19,9 @@ engine = create_engine(
 
 # Session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Base class for models
+Base = declarative_base()
 
 
 def get_db() -> Generator[Session, None, None]:

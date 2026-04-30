@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers.auth import router as auth_router
 from app.routers.goals import router as goals_router
 from app.routers.users import router as users_router
+from app.routers.billing import router as billing_router
 
 app = FastAPI(
     title="Commitment Score API",
@@ -24,6 +25,7 @@ app.add_middleware(
 app.include_router(auth_router, prefix="/api")
 app.include_router(goals_router, prefix="/api")
 app.include_router(users_router, prefix="/api")
+app.include_router(billing_router, prefix="/api")
 
 
 @app.get("/")
