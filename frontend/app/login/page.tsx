@@ -37,20 +37,25 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Skip link for accessibility */}
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#533afd] focus:text-white focus:rounded-md focus:shadow-lg">
+        Skip to main content
+      </a>
+
       {/* Animated gradient orb background */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div className="absolute -top-[30%] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[radial-gradient(circle,rgba(83,58,253,0.15)_0%,rgba(168,85,247,0.08)_40%,transparent_70%)] blur-[60px] animate-pulse" />
       </div>
 
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md">
         {/* Mascot */}
         <div className="flex justify-center mb-6">
-          <div className="w-14 h-14 bg-gradient-to-br from-[#533afd] to-[#a855f7] rounded-xl flex items-center justify-center text-2xl shadow-lg shadow-[#533afd]/30">
+          <div className="w-14 h-14 bg-gradient-to-br from-[#533afd] to-[#a855f7] rounded-xl flex items-center justify-center text-2xl shadow-lg shadow-[#533afd]/30" aria-hidden="true">
             🦡
           </div>
         </div>
 
-        <h2 className="text-center text-3xl font-bold tracking-tight">
+        <h2 className="text-center text-3xl font-bold tracking-tight" id="main-content">
           Welcome back
         </h2>
         <p className="mt-2 text-center text-sm text-[#a6a6a6]">

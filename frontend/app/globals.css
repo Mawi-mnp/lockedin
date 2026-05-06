@@ -3,38 +3,66 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 0%;
-  --foreground: 255 255 255;
-  --card: 10 10 10;
-  --card-foreground: 255 255 255;
-  --popover: 10 10 10;
-  --popover-foreground: 255 255 255;
-  --primary: 83 58 253;
-  --primary-foreground: 255 255 255;
-  --secondary: 168 85 247;
-  --secondary-foreground: 255 255 255;
-  --muted: 166 166 166;
-  --muted-background: 24 24 24;
-  --accent: 236 72 153;
-  --accent-foreground: 255 255 255;
-  --destructive: 239 68 68;
-  --destructive-foreground: 255 255 255;
-  --border: 255 255 255 / 0.08;
-  --input: 255 255 255 / 0.08;
-  --ring: 83 58 253;
-  --radius: 0.75rem;
+  /* Backgrounds — Framer pure black void */
+  --bg-primary: #000000;
+  --bg-elevated: #0a0a0a;
+  --bg-surface: #0f0f0f;
+  
+  /* Brand — Stripe purple + Framer blue fusion */
+  --brand-primary: #533afd;
+  --brand-hover: #665efd;
+  --brand-glow: rgba(83, 58, 253, 0.3);
+  --brand-ring: rgba(83, 58, 253, 0.15);
+  
+  /* Text — Vercel hierarchy */
+  --text-primary: #ffffff;
+  --text-secondary: #a6a6a6;
+  --text-tertiary: #666666;
+  --text-muted: #444444;
+  
+  /* Status */
+  --success: #10b981;
+  --success-bg: rgba(16, 185, 129, 0.15);
+  --warning: #f59e0b;
+  --error: #ef4444;
 }
 
 body {
-  font-family: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-  background: #000;
-  color: #fff;
+  font-family: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Typography — Vercel compression */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+/* Gradient text utilities */
+.text-gradient {
+  background: linear-gradient(135deg, #533afd 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #0099ff 0%, #533afd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Custom scrollbar */
@@ -53,30 +81,13 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #533afd;
+  background: var(--brand-primary);
 }
 
 /* Selection color */
 ::selection {
-  background: rgba(83, 58, 253, 0.3);
+  background: var(--brand-glow);
   color: #fff;
-}
-
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, #533afd, #a855f7, #ec4899);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Glow effect utility */
-.glow {
-  box-shadow: 0 0 20px rgba(83, 58, 253, 0.3);
-}
-
-.glow-lg {
-  box-shadow: 0 0 40px rgba(83, 58, 253, 0.4);
 }
 
 /* Floating animation */
@@ -120,3 +131,53 @@ html {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
+
+/* Pulse animation for hero orb */
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+}
+
+/* Premium border utilities */
+.border-subtle {
+  border: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px;
+}
+
+.border-shadow {
+  border: rgba(255, 255, 255, 0.08) 0px 0px 0px 1px;
+}
+
+.border-brand {
+  border: rgba(83, 58, 253, 0.3) 0px 0px 0px 1px;
+}
+
+/* Premium shadow utilities */
+.shadow-xs {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 1px 1px;
+}
+
+.shadow-sm {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 2px;
+}
+
+.shadow-md {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 4px, rgba(0, 0, 0, 0.04) 0px 8px 8px -8px;
+}
+
+.shadow-lg {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.08) 0px 16px 24px -16px;
+}
+
+.shadow-glow {
+  box-shadow: rgba(83, 58, 253, 0.2) 0px 0px 60px -20px;
+}
+
+.shadow-inner {
+  box-shadow: #1a1a1a 0px 0px 0px 1px inset;
+}
+
+/* Tier colors */
+.tier-champion { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+.tier-achiever { background: rgba(83, 58, 253, 0.2); color: #a855f7; }
+.tier-builder { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
+.tier-starter { background: rgba(239, 68, 68, 0.2); color: var(--error); }
