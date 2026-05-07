@@ -2,84 +2,96 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function Header() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-    >
-      <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Animated Logo */}
-        <Link href="/" className="group flex items-center gap-3">
-          <motion.div 
-            className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-[#533afd] to-[#a855f7] flex items-center justify-center shadow-lg shadow-[#533afd]/30"
-            whileHover={{ rotate: 15, scale: 1.1 }}
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/70 border-b border-white/10">
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo with animated gradient */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <motion.div
+            className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-xl"
+            whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ duration: 0.2 }}
           >
-            {/* Honey badger icon */}
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white">
-              <circle cx="12" cy="8" r="5" stroke="currentColor" strokeWidth="1.5"/>
-              <ellipse cx="12" cy="16" rx="7" ry="5" stroke="currentColor" strokeWidth="1.5"/>
-              <circle cx="10" cy="7" r="1.5" fill="currentColor"/>
-              <circle cx="14" cy="7" r="1.5" fill="currentColor"/>
-              <path d="M11 10 Q12 11 13 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#533afd] to-[#a855f7] blur-md opacity-50 group-hover:opacity-75 transition-opacity" />
+            🦡
           </motion.div>
-          
-          {/* Logo Text with Gradient */}
-          <div className="flex flex-col">
-            <span className="text-xl font-bold bg-gradient-to-r from-white via-[#e0e7ff] to-[#a855f7] bg-clip-text text-transparent group-hover:from-[#a855f7] group-hover:via-[#c4b5fd] group-hover:to-white transition-all duration-300">
+          <motion.div
+            className="relative overflow-hidden"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <span className="text-2xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto] animate-[gradient_3s_ease_infinite]">
               CommitScore
             </span>
-            <span className="text-[10px] text-[#666] font-medium tracking-wider uppercase -mt-1">
-              Build Accountability
-            </span>
-          </div>
+            {/* Hover glow effect */}
+            {isHovered && (
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-blue-500/20 blur-xl -z-10"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              />
+            )}
+          </motion.div>
         </Link>
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center gap-8">
-          {[
-            { name: 'How It Works', href: '#how-it-works' },
-            { name: 'Features', href: '#features' },
-            { name: 'Stories', href: '#testimonials' },
-          ].map((item, i) => (
-            <motion.a
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-[#a6a6a6] hover:text-white transition-colors relative group"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * i }}
-            >
-              {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#533afd] to-[#a855f7] group-hover:w-full transition-all duration-300" />
-            </motion.a>
-          ))}
+          <Link 
+            href="#how-it-works" 
+            className="text-sm text-gray-300 hover:text-white transition-colors duration-200 relative group"
+          >
+            How It Works
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-blue-500 group-hover:w-full transition-all duration-300" />
+          </Link>
+          <Link 
+            href="#features" 
+            className="text-sm text-gray-300 hover:text-white transition-colors duration-200 relative group"
+          >
+            Features
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-blue-500 group-hover:w-full transition-all duration-300" />
+          </Link>
+          <Link 
+            href="#stories" 
+            className="text-sm text-gray-300 hover:text-white transition-colors duration-200 relative group"
+          >
+            Stories
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-blue-500 group-hover:w-full transition-all duration-300" />
+          </Link>
         </div>
 
-        {/* Auth Buttons */}
-        <div className="flex items-center gap-3">
+        {/* Action Buttons */}
+        <div className="flex items-center gap-4">
           <Link 
             href="/login"
-            className="text-sm font-medium text-[#a6a6a6] hover:text-white transition-colors px-4 py-2"
+            className="px-5 py-2.5 text-sm font-medium text-gray-300 hover:text-white border border-white/20 hover:border-white/40 rounded-lg transition-all duration-200 hover:bg-white/5"
           >
             Log In
           </Link>
           <Link 
             href="/register"
-            className="relative px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-[#533afd] to-[#a855f7] rounded-full hover:shadow-lg hover:shadow-[#533afd]/30 transition-all hover:-translate-y-0.5"
+            className="px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-500 hover:to-blue-500 rounded-lg shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 transition-all duration-200 hover:scale-105"
           >
             Sign Up
-            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#533afd] to-[#a855f7] blur-md opacity-0 hover:opacity-50 transition-opacity -z-10" />
           </Link>
         </div>
-      </div>
-    </motion.nav>
+      </nav>
+
+      {/* Inline gradient animation styles */}
+      <style jsx>{`
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient {
+          animation: gradient 3s ease infinite;
+        }
+      `}</style>
+    </header>
   );
 }
